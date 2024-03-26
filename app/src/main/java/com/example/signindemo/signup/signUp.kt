@@ -22,7 +22,9 @@ import com.example.signindemo.components.PassWordInput
 import com.example.signindemo.components.PrimaryButton
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    navigateBack:()->Unit
+) {
     var username by remember{mutableStateOf( "")}
     var email by remember{ mutableStateOf( "") }
     var password by remember{ mutableStateOf( "") }
@@ -57,6 +59,7 @@ fun SignUpScreen() {
         )
 
         PrimaryButton(label = "SignUp") {
+            navigateBack()
 
         }
 
