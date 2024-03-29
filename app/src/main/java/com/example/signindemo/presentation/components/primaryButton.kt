@@ -1,4 +1,4 @@
-package com.example.signindemo.components
+package com.example.signindemo.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth

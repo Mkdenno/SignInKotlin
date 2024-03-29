@@ -1,4 +1,4 @@
-package com.example.signindemo.components
+package com.example.signindemo.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,12 +23,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun Input(
     label: String,
     placeholder: String,
     value: String,
+    errorMessage:String,
+    isError:Boolean,
     onValueChange: (String) -> Unit,
     modifier: Modifier =Modifier
 ) {
@@ -46,6 +50,16 @@ fun Input(
                 .fillMaxWidth()
 
         )
+        if (isError){
+           Text(
+               text =errorMessage,
+               color= MaterialTheme.colorScheme.error,
+               fontSize = 13.sp
+
+               )
+        }
+
+
 
 
     }
@@ -58,6 +72,8 @@ fun PassWordInput(
     label: String="Password",
     placeholder: String="Type Your Password",
     value: String,
+    errorMessage:String,
+    isError:Boolean,
     onValueChange: (String) -> Unit,
     modifier: Modifier =Modifier
 ) {
@@ -90,11 +106,20 @@ fun PassWordInput(
                         contentDescription = null
                     )
 
+
                 }
 
             }
 
         )
+        if (isError){
+            Text(
+                text =errorMessage,
+                color= MaterialTheme.colorScheme.error,
+                fontSize = 13.sp
+
+            )
+        }
 
 
     }
