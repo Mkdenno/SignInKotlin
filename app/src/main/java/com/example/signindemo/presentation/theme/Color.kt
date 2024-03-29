@@ -1,4 +1,4 @@
-package com.example.signindemo.ui.theme
+package com.example.signindemo.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

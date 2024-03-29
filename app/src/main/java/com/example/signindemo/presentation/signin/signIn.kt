@@ -1,4 +1,4 @@
-package com.example.signindemo.signin
+package com.example.signindemo.presentation.signin
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -18,18 +19,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.signindemo.components.Input
-import com.example.signindemo.components.PassWordInput
-import com.example.signindemo.components.PrimaryButton
+import com.example.signindemo.presentation.components.Input
+import com.example.signindemo.presentation.components.PassWordInput
+import com.example.signindemo.presentation.components.PrimaryButton
 
 @Composable
 fun SignInScreen(
+    signInViewModel: SignInViewModel,
     navigateToSignUp:()->Unit,
     navigateToHomeScreen:()->Unit
 ) {
 
-    var username by remember {mutableStateOf("")}
-    var password by remember {mutableStateOf("")}
+    val state by signInViewModel.state.collectAsState()
+
+//    var username by remember {mutableStateOf("")}
+//    var password by remember {mutableStateOf("")}
     Column(modifier = Modifier
         .padding(16.dp),
         verticalArrangement = Arrangement.Center,
@@ -39,16 +43,26 @@ fun SignInScreen(
 
         Spacer(modifier = Modifier .height(8.dp))
 
-        Input(label = "Username", placeholder ="Username" , value =username, onValueChange ={
-            username=it
+        Input(label = "Username",
+            placeholder ="Username" ,
+            value =state.username,
+            isError =state.isUsernameError,
+            errorMessage = state.usernameError,
+            onValueChange ={
+            signInViewModel.onUsernameChange(it)
         } )
 
         Spacer(modifier = Modifier
             .height(8.dp)
         )
 
-        PassWordInput(value = password, onValueChange = {
-            password=it
+        PassWordInput(
+
+            value = state.password,
+            isError = state.isPasswordError,
+            errorMessage= state.passwordError,
+            onValueChange = {
+           signInViewModel.onPasswordChange(it)
         })
 
         Spacer(modifier = Modifier
@@ -56,7 +70,8 @@ fun SignInScreen(
         )
 
         PrimaryButton(label = "SIGN IN") {
-            navigateToHomeScreen()
+//            navigateToHomeScreen()
+            signInViewModel.signIn()
 
         }
         Spacer(modifier = Modifier.height(.16.dp))

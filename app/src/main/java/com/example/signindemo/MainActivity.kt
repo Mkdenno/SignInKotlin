@@ -11,10 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.signindemo.navigation.Navigation
-import com.example.signindemo.signin.SignInScreen
-import com.example.signindemo.signup.SignUpScreen
-import com.example.signindemo.ui.theme.SigninDemoTheme
+import com.example.signindemo.presentation.navigation.Navigation
+import com.example.signindemo.presentation.signin.SignInScreen
+import com.example.signindemo.presentation.signup.SignUpScreen
+import com.example.signindemo.presentation.theme.SigninDemoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
