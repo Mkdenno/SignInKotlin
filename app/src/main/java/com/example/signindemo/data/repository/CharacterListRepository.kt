@@ -10,7 +10,7 @@ import java.io.IOException
 
 interface CharacterListRepository {
 
-    fun getCharacterList(): Flow<Resource<Data>>
+    fun getCharacterList(): Flow<Resource<List<Data>>>
     fun getCharacterDetail(id: String): Flow<Resource<Data>>
 }
 

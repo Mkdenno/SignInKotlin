@@ -30,7 +30,10 @@ import com.example.signindemo.data.models.Attributes
 
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    navigateToCharacterDetailScreen:(String)->Unit
+
+
 ) {
     val state by homeViewModel.state.collectAsState()
     
@@ -59,6 +62,7 @@ fun HomeScreen(
             ) {
             items(state.data){ character->
                 CharacterItem(attributes = character.attributes) {
+                    navigateToCharacterDetailScreen(character.id)
 
                 }
             }

@@ -9,7 +9,7 @@ interface HarryPotterApi {
     @GET("characters")
     suspend fun getCharacters(): characterResponse
 
-    @GET("/characters/{id}")
+    @GET("characters/{id}")
 
     suspend fun getCharacterDetail(@Path("id") id: String): CharacterDetailResponse
 }
