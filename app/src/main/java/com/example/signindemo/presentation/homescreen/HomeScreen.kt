@@ -77,7 +77,7 @@ fun HomeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharacterItem(
-    modifier: Modifier =Modifier,
+    modifier: Modifier = Modifier,
     attributes: Attributes,
     
     onClick:()->Unit
